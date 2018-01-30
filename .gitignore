@@ -32,3 +32,8 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Deployment config
+/deployment/config.ini
+
+.DS_Store
