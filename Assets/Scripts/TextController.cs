@@ -25,34 +25,78 @@ public class TextController : MonoBehaviour {
 		{
 			state_sheets_0();
 		}
+		else if (myState == States.mirror)
+		{
+			state_mirror();
+		}
+		else if (myState == States.lock_0)
+		{
+			state_lock_0();
+		}
+	}
+
+	public void stateChanger1()
+	{
+		if (Input.GetKeyDown(KeyCode.C))
+		{
+			myState = States.cell;
+		}
+		else if (Input.GetKeyDown(KeyCode.S))
+		{
+			myState = States.sheets_0;
+		}
+		else if(Input.GetKeyDown(KeyCode.M))
+		{
+			myState = States.mirror;
+		}
+		else if(Input.GetKeyDown(KeyCode.L))
+		{
+			myState = States.lock_0;
+		}
 	}
 
 	void state_cell ()
 	{
 		text.text = "Dudeman was a mean guy who was in prison. In the prison there was a " +
 					"painting on the wall that just said 'Prison' to remind Mean Dudeman that he was " +
-					"indeed, in prison.\n \n" +
+					"indeed in prison.\n \n" +
 					"Press 'S' to view Sheets \n" +
 					"Press 'M' to view Mirror \n" +
 					"Press 'L' to view Lock";
 
-		if (Input.GetKeyDown(KeyCode.S))
-		{
-			myState = States.sheets_0;
-		}
+		stateChanger1();
 	}
 
 		void state_sheets_0 ()
 	{
-		text.text = "You look at your sheets and for a moment think about hanging yourself. It's been a while since you saw the outside world. But today is " +
-					"the day you're getting out and this is no time to despair. You look around the cell for other things once more. \n \n" +
+		text.text = "Dudeman looked at his sheets and for a moment thought about hanging himself. It's been a while since he saw the outside world. But today is " +
+					"the day he's getting out and this is no time to despair. He looks around the cell for other things once more. \n \n" +
 					"Press 'C' to view Cell \n" +
 					"Press 'M' to view Mirror \n" +
 					"Press 'L' to view Lock";
 
-		if (Input.GetKeyDown(KeyCode.C))
-		{
-			myState = States.cell;
-		}
+		stateChanger1();
+	}
+
+		void state_mirror ()
+	{
+		text.text = "Dudeman looked in the mirror. During his time in prison he had grown an ugly neckbeard. It was the main reason " +
+					"he wanted to get out. To shave that ugly beard. God damn. \n \n" +
+					"Press 'C' to view Cell \n" +
+					"Press 'S' to view Sheets \n" +
+					"Press 'L' to view Lock";
+
+		stateChanger1();
+	}
+
+		void state_lock_0 ()
+	{
+		text.text = "Mean Dudeman stared at the lock of his cell very intently. There had to be a way out of this shithole, he thought." +
+					" \n \n" +
+					"Press 'C' to view Cell \n" +
+					"Press 'S' to view Sheets \n" +
+					"Press 'L' to view Lock";
+
+		stateChanger1();
 	}
 }
