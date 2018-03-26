@@ -8,7 +8,7 @@ public class TextController : MonoBehaviour {
 	// Use this for initialization
 
 	public Text text;
-	private enum States {cell, mirror, sheets_0, lock_0, cell_mirror, sheets_1, lock_1, freedom};
+	private enum States {cell, mirror, sheets_0, lock_0, breakout_1, cell_mirror, sheets_1, lock_1, breakout_2, freedom};
 	private States myState;
 	void Start () {
 		myState = States.cell;
@@ -33,8 +33,12 @@ public class TextController : MonoBehaviour {
 		{
 			state_lock_0();
 		}
+		else if (myState == States.breakout_1)
+		{
+			state_breakout_1();
+		}
 	}
-
+	// Function for changing the states in part 1 of the game
 	public void stateChanger1()
 	{
 		if (Input.GetKeyDown(KeyCode.C))
@@ -53,6 +57,11 @@ public class TextController : MonoBehaviour {
 		{
 			myState = States.lock_0;
 		}
+	}
+
+	public void breakout1()
+	{
+
 	}
 
 	void state_cell ()
@@ -91,12 +100,25 @@ public class TextController : MonoBehaviour {
 
 		void state_lock_0 ()
 	{
-		text.text = "Mean Dudeman stared at the lock of his cell very intently. There had to be a way out of this shithole, he thought." +
-					" \n \n" +
+		text.text = "Mean Dudeman stared at the lock of his cell very intently. 'There has to be a way out of this shithole' he thought out loud, being the idiot he is." +
+					"He smells the lock. He licks the lock. He wiggles it around and does the hokey pokey. Eventually Dudeman comes to the conclusion that he is " +
+					"capable of escaping the cell. \n \n" +
+					"Press 'E' to try to escape \n" +
 					"Press 'C' to view Cell \n" +
 					"Press 'S' to view Sheets \n" +
 					"Press 'L' to view Lock";
+		
+		if (Input.GetKeyDown(KeyCode.E))
+		{
+			myState = States.breakout_1;
+		}
 
 		stateChanger1();
+	}
+
+	void state_breakout_1()
+	{
+		text.text = "The breakout starts here. Do a short sequence here where you get to make choices that probably don't matter and eventually end up in a hallway perhaps? " +
+		"Then do the whole thing all over again and then freedom. Remember to rewrite state names for the hallway escape sequence or whatever you decide for it to be";
 	}
 }
